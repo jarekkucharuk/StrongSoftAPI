@@ -9,6 +9,5 @@ public class StrongSoftApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(StrongSoftApplication.class, args);
 	}
-
 }
 
