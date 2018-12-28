@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Values {
 
-    private Long value1;
-    private Long value2;
+    private Double value1;
+    private Double value2;
 
 }

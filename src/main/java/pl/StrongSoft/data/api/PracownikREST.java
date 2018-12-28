@@ -36,6 +36,7 @@ public class PracownikREST {
     PracownikDtoMapper pracownikDtoMapper;
     @Autowired
     PracownikAdresDtoMapper pracownikAdresDtoMapper;
+
     @GetMapping("/all")
     public List<Pracownik> getPracownikList() {
 
@@ -44,7 +45,7 @@ public class PracownikREST {
         return stream.collect(Collectors.toList());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/one/{id}")
     public PracownikDTO getPracownik(@PathVariable Integer id) throws NotFoundException {
 
         Pracownik pracownik = pracownikRepository.findById(id)
@@ -52,27 +53,32 @@ public class PracownikREST {
 
         PracownikAdres pracownikAdres = pracownik.getPracownikAdres();
 
-        PracownikDTO pracownikDTO = pracownikDtoMapper.mapToDTO(new PracownikDTO(),pracownik);
+        PracownikDTO pracownikDTO = pracownikDtoMapper.mapToDTO(new PracownikDTO(), pracownik);
 
-        PracownikAdresDTO pracownikAdresDTO = pracownikAdresDtoMapper.mapToDTO(new PracownikAdresDTO(),pracownikAdres);
+        PracownikAdresDTO pracownikAdresDTO = pracownikAdresDtoMapper.mapToDTO(new PracownikAdresDTO(), pracownikAdres);
+
         pracownikDTO.setPracownikAdresDTO(pracownikAdresDTO);
 
         return pracownikDTO;
     }
 
     @PostMapping
-    public Long getSum(@RequestBody Values values) {
+    public Double getSum(@RequestBody Values values) {
 
-        return Math.addExact(values.getValue1(), values.getValue2());
+        return (values.getValue1() + values.getValue2());
     }
 
     @PutMapping
-    public void savePracownik(@RequestBody PracownikDTO pracownikDTO){
+    public void savePracownik(@RequestBody PracownikDTO pracownikDTO) {
 
-        Pracownik pracownik = pracownikMapper.mapFromDTO(new Pracownik(),pracownikDTO);
-        PracownikAdres pracownikAdres = pracownikAdresMapper.mapFromDTO(new PracownikAdres(),pracownikDTO);
+        Pracownik pracownik = pracownikMapper.mapFromDTO(new Pracownik(), pracownikDTO);
+
+        PracownikAdres pracownikAdres = pracownikAdresMapper.mapFromDTO(new PracownikAdres(), pracownikDTO);
+
         pracownikAdresRepository.save(pracownikAdres);
+
         pracownik.setPracownikAdres(pracownikAdres);
+
         pracownikRepository.save(pracownik);
     }
 }
