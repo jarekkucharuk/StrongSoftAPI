@@ -1,4 +1,4 @@
-package pl.StrongSoft.data.domain;
+package pl.StrongSoft.data.jpa.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -122,6 +122,7 @@ public class PracownikAdres implements Serializable {
 
     @Override
     public String toString() {
-        return "pl.StrongSoft.data.domain.PracownikAdres[ pracownikAdresId=" + pracownikAdresId + " ]";
+        return "pl.StrongSoft.data.jpa.domain.PracownikAdres[ pracownikAdresId=" + pracownikAdresId + " ]";
     }
+
 }
