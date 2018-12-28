@@ -1,10 +1,10 @@
-package pl.StrongSoft.jpa.api;
+package pl.StrongSoft.data.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.StrongSoft.data.domain.PracownikAdres;
+import pl.StrongSoft.data.jpa.domain.PracownikAdres;
 import pl.StrongSoft.data.service.PracownikAdresRepository;
 
 import java.util.List;

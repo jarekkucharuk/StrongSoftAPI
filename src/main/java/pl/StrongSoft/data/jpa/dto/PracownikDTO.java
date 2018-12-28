@@ -1,7 +1,6 @@
-package pl.StrongSoft.jpa.dto;
+package pl.StrongSoft.data.jpa.dto;
 
 import lombok.Data;
-import pl.StrongSoft.data.domain.PracownikAdres;
 
 @Data
 public class PracownikDTO {
@@ -10,6 +9,6 @@ public class PracownikDTO {
     private String imie;
     private String nazwisko;
     private String email;
-    private PracownikAdres pracownikAdres;
+    private PracownikAdresDTO pracownikAdresDTO;
 
 }

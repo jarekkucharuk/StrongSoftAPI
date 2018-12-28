@@ -1,16 +1,19 @@
-package pl.StrongSoft.jpa.api;
+package pl.StrongSoft.data.api;
 
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pl.StrongSoft.data.domain.Pracownik;
-import pl.StrongSoft.data.domain.PracownikAdres;
+import pl.StrongSoft.data.jpa.domain.Pracownik;
+import pl.StrongSoft.data.jpa.domain.PracownikAdres;
 import pl.StrongSoft.data.service.PracownikAdresRepository;
 import pl.StrongSoft.data.service.PracownikRepository;
-import pl.StrongSoft.jpa.dto.PracownikDTO;
-import pl.StrongSoft.jpa.dto.ValuesDTO;
-import pl.StrongSoft.jpa.mapper.PracownikAdresMapper;
-import pl.StrongSoft.jpa.mapper.PracownikMapper;
+import pl.StrongSoft.data.jpa.dto.PracownikAdresDTO;
+import pl.StrongSoft.data.jpa.dto.PracownikDTO;
+import pl.StrongSoft.data.jpa.domain.Values;
+import pl.StrongSoft.data.jpa.mapper.PracownikAdresDtoMapper;
+import pl.StrongSoft.data.jpa.mapper.PracownikAdresMapper;
+import pl.StrongSoft.data.jpa.mapper.PracownikDtoMapper;
+import pl.StrongSoft.data.jpa.mapper.PracownikMapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,7 +32,10 @@ public class PracownikREST {
     PracownikMapper pracownikMapper;
     @Autowired
     PracownikAdresMapper pracownikAdresMapper;
-
+    @Autowired
+    PracownikDtoMapper pracownikDtoMapper;
+    @Autowired
+    PracownikAdresDtoMapper pracownikAdresDtoMapper;
     @GetMapping("/all")
     public List<Pracownik> getPracownikList() {
 
@@ -38,18 +44,26 @@ public class PracownikREST {
         return stream.collect(Collectors.toList());
     }
 
-    @GetMapping("/pr/{id}")
-    public Pracownik getPracownik(@PathVariable Integer id) throws NotFoundException {
+    @GetMapping("/{id}")
+    public PracownikDTO getPracownik(@PathVariable Integer id) throws NotFoundException {
 
         Pracownik pracownik = pracownikRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Nie ma pracownika o id= " + id));
 
-        return pracownik;
+        PracownikAdres pracownikAdres = pracownik.getPracownikAdres();
+
+        PracownikDTO pracownikDTO = pracownikDtoMapper.mapToDTO(new PracownikDTO(),pracownik);
+
+        PracownikAdresDTO pracownikAdresDTO = pracownikAdresDtoMapper.mapToDTO(new PracownikAdresDTO(),pracownikAdres);
+        pracownikDTO.setPracownikAdresDTO(pracownikAdresDTO);
+
+        return pracownikDTO;
     }
 
     @PostMapping
-    public Long getValues(@RequestBody ValuesDTO valuesDTO) {
-        return valuesDTO.sum(valuesDTO.getValue1(), valuesDTO.getValue2());
+    public Long getSum(@RequestBody Values values) {
+
+        return Math.addExact(values.getValue1(), values.getValue2());
     }
 
     @PutMapping

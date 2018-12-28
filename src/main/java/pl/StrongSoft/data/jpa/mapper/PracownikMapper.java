@@ -1,8 +1,8 @@
-package pl.StrongSoft.jpa.mapper;
+package pl.StrongSoft.data.jpa.mapper;
 
 import org.springframework.stereotype.Component;
-import pl.StrongSoft.data.domain.Pracownik;
-import pl.StrongSoft.jpa.dto.PracownikDTO;
+import pl.StrongSoft.data.jpa.domain.Pracownik;
+import pl.StrongSoft.data.jpa.dto.PracownikDTO;
 
 @Component
 public class PracownikMapper {
@@ -16,4 +16,5 @@ public class PracownikMapper {
 
         return pracownik;
     }
+
 }
