@@ -124,4 +124,5 @@ public class PracownikAdres implements Serializable {
     public String toString() {
         return "pl.StrongSoft.data.jpa.domain.PracownikAdres[ pracownikAdresId=" + pracownikAdresId + " ]";
     }
+
 }

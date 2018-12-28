@@ -16,4 +16,5 @@ public class PracownikDtoMapper {
 
         return pracownikDTO;
     }
+
 }

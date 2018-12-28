@@ -7,5 +7,4 @@ public class Values {
 
     private Double value1;
     private Double value2;
-
 }

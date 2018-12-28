@@ -19,4 +19,5 @@ public class PracownikAdresDtoMapper {
 
         return pracownikAdresDTO;
     }
+
 }

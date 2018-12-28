@@ -26,4 +26,5 @@ public class PracownikAdresREST {
 
         return stream.collect(Collectors.toList());
     }
+
 }

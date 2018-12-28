@@ -10,5 +10,4 @@ public class PracownikDTO {
     private String nazwisko;
     private String email;
     private PracownikAdresDTO pracownikAdresDTO;
-
 }

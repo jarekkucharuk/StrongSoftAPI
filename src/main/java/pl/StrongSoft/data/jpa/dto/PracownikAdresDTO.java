@@ -12,5 +12,4 @@ public class PracownikAdresDTO {
     private String kodPocztowy;
     private String miasto;
     private String panstwo;
-
 }

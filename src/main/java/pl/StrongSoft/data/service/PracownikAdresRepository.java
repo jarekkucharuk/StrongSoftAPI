@@ -7,4 +7,5 @@ import pl.StrongSoft.data.jpa.domain.PracownikAdres;
 @Repository
 public interface PracownikAdresRepository extends JpaRepository<PracownikAdres, Integer>{
 
+
 }
