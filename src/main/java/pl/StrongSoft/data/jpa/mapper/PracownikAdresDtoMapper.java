@@ -1,7 +1,7 @@
 package pl.StrongSoft.data.jpa.mapper;
 
 import org.springframework.stereotype.Component;
-import pl.StrongSoft.data.jpa.domain.PracownikAdres;
+import pl.StrongSoft.data.jpa.domain.entities.PracownikAdres;
 import pl.StrongSoft.data.jpa.dto.PracownikAdresDTO;
 
 @Component

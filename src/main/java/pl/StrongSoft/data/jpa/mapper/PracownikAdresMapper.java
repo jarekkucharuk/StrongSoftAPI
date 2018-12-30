@@ -1,21 +1,21 @@
 package pl.StrongSoft.data.jpa.mapper;
 
 import org.springframework.stereotype.Component;
-import pl.StrongSoft.data.jpa.domain.PracownikAdres;
-import pl.StrongSoft.data.jpa.dto.PracownikDTO;
+import pl.StrongSoft.data.jpa.domain.entities.PracownikAdres;
+import pl.StrongSoft.data.jpa.dto.PracownikAdresDTO;
 
 @Component
 public class PracownikAdresMapper {
 
-    public PracownikAdres mapFromDTO (PracownikAdres pracownikAdres, PracownikDTO pracownikDTO){
+    public PracownikAdres mapFromDTO (PracownikAdres pracownikAdres, PracownikAdresDTO pracownikAdresDTO){
 
-        pracownikAdres.setPracownikAdresId(pracownikDTO.getPracownikAdresDTO().getPracownikAdresId());
-        pracownikAdres.setKodPocztowy(pracownikDTO.getPracownikAdresDTO().getKodPocztowy());
-        pracownikAdres.setMiasto(pracownikDTO.getPracownikAdresDTO().getMiasto());
-        pracownikAdres.setNrDomu(pracownikDTO.getPracownikAdresDTO().getNrDomu());
-        pracownikAdres.setNrMieszkania(pracownikDTO.getPracownikAdresDTO().getNrMieszkania());
-        pracownikAdres.setUlica(pracownikDTO.getPracownikAdresDTO().getUlica());
-        pracownikAdres.setPanstwo(pracownikDTO.getPracownikAdresDTO().getPanstwo());
+        pracownikAdres.setPracownikAdresId(pracownikAdresDTO.getPracownikAdresId());
+        pracownikAdres.setKodPocztowy(pracownikAdresDTO.getKodPocztowy());
+        pracownikAdres.setMiasto(pracownikAdresDTO.getMiasto());
+        pracownikAdres.setNrDomu(pracownikAdresDTO.getNrDomu());
+        pracownikAdres.setNrMieszkania(pracownikAdresDTO.getNrMieszkania());
+        pracownikAdres.setUlica(pracownikAdresDTO.getUlica());
+        pracownikAdres.setPanstwo(pracownikAdresDTO.getPanstwo());
 
         return pracownikAdres;
     }
