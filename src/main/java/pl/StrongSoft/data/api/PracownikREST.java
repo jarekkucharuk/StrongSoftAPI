@@ -3,8 +3,8 @@ package pl.StrongSoft.data.api;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pl.StrongSoft.data.jpa.domain.Pracownik;
-import pl.StrongSoft.data.jpa.domain.PracownikAdres;
+import pl.StrongSoft.data.jpa.domain.entities.Pracownik;
+import pl.StrongSoft.data.jpa.domain.entities.PracownikAdres;
 import pl.StrongSoft.data.service.PracownikAdresRepository;
 import pl.StrongSoft.data.service.PracownikRepository;
 import pl.StrongSoft.data.jpa.dto.PracownikAdresDTO;
@@ -51,11 +51,9 @@ public class PracownikREST {
         Pracownik pracownik = pracownikRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Nie ma pracownika o id= " + id));
 
-        PracownikAdres pracownikAdres = pracownik.getPracownikAdres();
-
         PracownikDTO pracownikDTO = pracownikDtoMapper.mapToDTO(new PracownikDTO(), pracownik);
 
-        PracownikAdresDTO pracownikAdresDTO = pracownikAdresDtoMapper.mapToDTO(new PracownikAdresDTO(), pracownikAdres);
+        PracownikAdresDTO pracownikAdresDTO = pracownikAdresDtoMapper.mapToDTO(new PracownikAdresDTO(), pracownik.getPracownikAdres());
 
         pracownikDTO.setPracownikAdresDTO(pracownikAdresDTO);
 
@@ -73,7 +71,7 @@ public class PracownikREST {
 
         Pracownik pracownik = pracownikMapper.mapFromDTO(new Pracownik(), pracownikDTO);
 
-        PracownikAdres pracownikAdres = pracownikAdresMapper.mapFromDTO(new PracownikAdres(), pracownikDTO);
+        PracownikAdres pracownikAdres = pracownikAdresMapper.mapFromDTO(new PracownikAdres(), pracownikDTO.getPracownikAdresDTO());
 
         pracownikAdresRepository.save(pracownikAdres);
 

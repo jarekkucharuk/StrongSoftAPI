@@ -5,23 +5,23 @@ import org.junit.Test;
 import pl.StrongSoft.data.jpa.domain.entities.PracownikAdres;
 import pl.StrongSoft.data.jpa.dto.PracownikAdresDTO;
 
-public class PracownikAdresDtoMapperTest {
+public class PracownikAdresMapperTest {
 
-    PracownikAdresDtoMapper pracownikAdresDtoMapper = new PracownikAdresDtoMapper();
+    PracownikAdresMapper pracownikAdresMapper = new PracownikAdresMapper();
 
     @Test
-    public void mapToDTO() throws Exception {
+    public void mapFromDTO() throws Exception {
 
-        PracownikAdres pracownikAdres= new PracownikAdres();
-        pracownikAdres.setPracownikAdresId(1);
-        pracownikAdres.setKodPocztowy("00-000");
-        pracownikAdres.setMiasto("Kraków");
-        pracownikAdres.setNrDomu("897");
-        pracownikAdres.setNrMieszkania("345");
-        pracownikAdres.setUlica("Lipowa");
-        pracownikAdres.setPanstwo("RPA");
+        PracownikAdresDTO pracownikAdresDTO = new PracownikAdresDTO();
+        pracownikAdresDTO.setPracownikAdresId(1);
+        pracownikAdresDTO.setKodPocztowy("00-000");
+        pracownikAdresDTO.setMiasto("Kraków");
+        pracownikAdresDTO.setNrDomu("897");
+        pracownikAdresDTO.setNrMieszkania("345");
+        pracownikAdresDTO.setUlica("Lipowa");
+        pracownikAdresDTO.setPanstwo("RPA");
 
-        PracownikAdresDTO pracownikAdresDTO =  pracownikAdresDtoMapper.mapToDTO(new PracownikAdresDTO(), pracownikAdres);
+        PracownikAdres pracownikAdres =  pracownikAdresMapper.mapFromDTO(new PracownikAdres(), pracownikAdresDTO);
 
         Assert.assertEquals(pracownikAdresDTO.getPracownikAdresId(), Integer.valueOf(1));
         Assert.assertEquals(pracownikAdresDTO.getKodPocztowy(), "00-000");
@@ -30,6 +30,6 @@ public class PracownikAdresDtoMapperTest {
         Assert.assertEquals(pracownikAdresDTO.getNrMieszkania(), "345");
         Assert.assertEquals(pracownikAdresDTO.getUlica(), "Lipowa");
         Assert.assertEquals(pracownikAdresDTO.getPanstwo(), "RPA");
-
     }
+
 }

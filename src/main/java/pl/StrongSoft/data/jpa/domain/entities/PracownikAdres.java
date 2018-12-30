@@ -1,4 +1,6 @@
-package pl.StrongSoft.data.jpa.domain;
+package pl.StrongSoft.data.jpa.domain.entities;
+
+import lombok.Data;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -8,6 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "pracownik_adres")
+@Data
 @NamedQueries({
     @NamedQuery(name = "PracownikAdres.findAll", query = "SELECT p FROM PracownikAdres p")
     , @NamedQuery(name = "PracownikAdres.findByPracownikAdresId", query = "SELECT p FROM PracownikAdres p WHERE p.pracownikAdresId = :pracownikAdresId")
@@ -37,69 +40,6 @@ public class PracownikAdres implements Serializable {
     @Column(name = "panstwo")
     private String panstwo;
 
-    public PracownikAdres() {
-    }
-
-    public PracownikAdres(Integer pracownikAdresId) {
-        this.pracownikAdresId = pracownikAdresId;
-    }
-
-    public Integer getPracownikAdresId() {
-        return pracownikAdresId;
-    }
-
-    public void setPracownikAdresId(Integer pracownikAdresId) {
-        this.pracownikAdresId = pracownikAdresId;
-    }
-
-    public String getUlica() {
-        return ulica;
-    }
-
-    public void setUlica(String ulica) {
-        this.ulica = ulica;
-    }
-
-    public String getNrDomu() {
-        return nrDomu;
-    }
-
-    public void setNrDomu(String nrDomu) {
-        this.nrDomu = nrDomu;
-    }
-
-    public String getNrMieszkania() {
-        return nrMieszkania;
-    }
-
-    public void setNrMieszkania(String nrMieszkania) {
-        this.nrMieszkania = nrMieszkania;
-    }
-
-    public String getKodPocztowy() {
-        return kodPocztowy;
-    }
-
-    public void setKodPocztowy(String kodPocztowy) {
-        this.kodPocztowy = kodPocztowy;
-    }
-
-    public String getMiasto() {
-        return miasto;
-    }
-
-    public void setMiasto(String miasto) {
-        this.miasto = miasto;
-    }
-
-    public String getPanstwo() {
-        return panstwo;
-    }
-
-    public void setPanstwo(String panstwo) {
-        this.panstwo = panstwo;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -122,7 +62,7 @@ public class PracownikAdres implements Serializable {
 
     @Override
     public String toString() {
-        return "pl.StrongSoft.data.jpa.domain.PracownikAdres[ pracownikAdresId=" + pracownikAdresId + " ]";
+        return "pl.StrongSoft.data.jpa.domain.entities.PracownikAdres[ pracownikAdresId=" + pracownikAdresId + " ]";
     }
 
 }
